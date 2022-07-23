@@ -1,0 +1,185 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": false,
+    "cutTests": false,
+    "cutClient": false,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": false,
+    "hideInterfaceCalls": false, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "BothDirections" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "main.jukeboxmain",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_3343801 { 
+   	label=main
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   jbplayer3343801[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)jbplayer</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   ais: AudioInputStream [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   clip: Clip [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   currpos: Long [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   status: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ audioplayer(link: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >- gotochoice(c: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ jump(c: long)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pause()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ play()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resetaudiostream()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ restart()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resume()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ stop()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+jbprocess3343801[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)jbprocess</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ acceptemail(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ acceptpassword(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ acceptusername(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addtoplaylist()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addtopodcastplaylist()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addtosongplaylist()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ checkpassword(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ checkuser()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ checkuseremail(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ createpodcastplaylist()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ createsongplaylist()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ listen()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ playfromtheplaylists()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ signin()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ signup()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ view()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+jdbcconnect3343801[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)jdbcconnect</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ checkavailability(q: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ checkavailabilityplname(q: String, plname: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ connect(): Statement</TD></TR>
+<TR><TD ALIGN="LEFT" >+ connection(): Connection</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displayplaylistdetails(plname: String, cid: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displayplaylists(q: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displaypodcasts()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displaysongs()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ fetchcid(email: String, password: String): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ fetchlink(q: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ fetchlistoflinks(q: String): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ fetchpplid(q: String): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ insert(q: String): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+jukeboxmain3343801[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)jukeboxmain</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+
+    
+}
+@enduml
